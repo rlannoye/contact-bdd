@@ -12,7 +12,23 @@ Given(/^The contact list is display$/, function (callback){
         this.browser.assert.success(tab[0].innerHTML === "Actions");
         callback();
     });
-}); 
+});
 
+When(/^User clicks on remove button of the first contact$/, function (callback){
+    this.browser.visit("/",(err) => {
+        if (err) throw err;
+        var bouton=this.browser.query('table tr td a');
+        bouton.click();
+        callback();
+    });
+});
+
+Then(/^The contact list is display$/, function (callback){
+    this.browser.visit("/", (err) => {
+        if (err) throw err;
+
+        callback();
+    });
+});
 
 
