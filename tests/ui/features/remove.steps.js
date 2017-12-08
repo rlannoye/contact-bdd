@@ -23,12 +23,16 @@ When(/^User clicks on remove button of the first contact$/, function (callback){
     });
 });
 
-Then(/^The contact list is display$/, function (callback){
+Then(/^The first contact is removed$/, function (callback){
     this.browser.visit("/", (err) => {
-        if (err) throw err;
-
+        var contact=this.browser.tabs.current.Contact.Contacts.instance();
+        var iterator = contact.iterator();
+        contact=iterator.next();
+        this.browser.assert.success(contact.firstName(),"Eric");
         callback();
     });
 });
+
+
 
 
